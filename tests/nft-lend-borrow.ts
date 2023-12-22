@@ -46,7 +46,7 @@ describe("nft-lend-borrow", () => {
     let vaultAuthorityPDA: PublicKey;
 
     let collectionId = new PublicKey(
-        "J1S9H3QjnRtBbbuD4HjPV6RpRhwuk4zKbxsnCHuTgh9w"
+        "CBteteyWg8VApK1MeuXeS4BnZfMZVwGtdg6Bpte3AoMC"
     );
 
     it("Can initialize the state of the world", async () => {
@@ -732,10 +732,10 @@ describe("nft-lend-borrow", () => {
         const minimumBalanceForRentExemption =
             await provider.connection.getMinimumBalanceForRentExemption(41);
 
-        await program.methods
+            await program.methods
             .withdrawOffer(
-                new anchor.BN(minimumBalanceForRentExemption),
-                collectionId
+                new anchor.BN(minimumBalanceForRentExemption),  // Assuming minimumBalanceForRentExemption is of type number or string
+        new anchor.web3.PublicKey(collectionId)
             )
             .accounts({
                 offerLoan: offerPDA,
